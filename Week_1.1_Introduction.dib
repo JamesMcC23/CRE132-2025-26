@@ -92,7 +92,11 @@ Change the text inside the `Console.WriteLine()` command. Make it print your nam
 
 #!csharp
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine("Greetings, mortals!"); 
+
+#!csharp
+
+Console.WriteLine("AAAAAAAAAAARRRGHHHHHHHH!!!!!!");
 
 #!markdown
 
@@ -172,6 +176,12 @@ Note how text can be added together using the ```+``` symbol. Though the ```+```
 #!csharp
 
 // Create your character's variables here
+string character_name = "Hugh Mann";
+int character_level = 8;
+float attack_power = 102.5f;
+bool is_cool = true;
+
+Console.WriteLine("There once was a brave warrior who went by the name " + character_name + " who through many fierce battles came to be level " + character_level + " with an attack so powerfull it had a value of " + attack_power );
 
 
 // Print your character's information here
@@ -322,7 +332,26 @@ https://github.com/raylib-cs/raylib-cs/tree/master/Raylib-cs/types
 
 #!csharp
 
-// Your customized window code goes here!
+using Raylib_cs;
+
+const int screen_width = 1000;
+const int screen_height = 1000;
+
+Raylib.InitWindow(screen_width, screen_height, "Epik cool game window");
+Raylib.SetTargetFPS(60);
+
+while (!Raylib.WindowShouldClose())
+{
+    Raylib.BeginDrawing();
+    Raylib.ClearBackground(Color.White);
+    Raylib.DrawText("Here is text...", screen_width/2 , screen_height/2 , 70, Color.Black);
+    if (Raylib.IsKeyPressed(MouseButton.Left))
+
+
+    Raylib.EndDrawing();
+}
+
+Raylib.CloseWindow();
 
 #!markdown
 

@@ -117,6 +117,17 @@ else
 #!csharp
 
 // Your password checker code goes here!
+String password = "Password123";
+String password_correct = "Password123";
+
+if (password == password_correct)
+{
+    Console.WriteLine("You shall pass");
+}
+else
+{
+    Console.WriteLine("You shall NOT pass");
+}
 
 #!markdown
 
@@ -182,6 +193,32 @@ A few things to note about the code above.
 
 - The logic for this goes something like ~ if averageMark >= 40; coursePassed = true; else coursePassed = false;
 - This is close to the correct code logic but the correct syntax needs to be used. 
+
+#!csharp
+
+using System;
+
+string name = "Hugh Mann";
+int age = 26;
+float average_mark = 24.28f;
+int max_score = 70;
+int pass_percent = 40;
+
+char average_grade;
+string pass_mark;
+
+if ((max_score/100)*pass_percent < average_mark)
+{
+    pass_mark = "Pass";
+}
+else
+{
+    pass_mark = "Fail";
+}
+
+
+
+Console.WriteLine(name + " has achieved a " + pass_mark + " with a score of " + average_mark + "/" + max_score)
 
 #!markdown
 
@@ -282,3 +319,13 @@ Right now, the game only tells the player if their guess was right or wrong. Mod
 #!csharp
 
 // Your improved guessing game code goes here!
+
+int secret_number = 37;
+int player_guess = 37;
+int number_of_tries;
+
+while (number_of_tries >= 3);
+    if((player_guess > secret_number));
+    {
+        Console.WriteLine("nope, too high")
+    }
