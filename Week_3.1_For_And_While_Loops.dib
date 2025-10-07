@@ -97,6 +97,16 @@ The program should print:
 
 // Your loop to print the song lyrics goes here!
 
+/* the $ sign identifies that there are variable within a string, leading to more streamline code */
+
+
+for (int bottles_of_pop = 99; bottles_of_pop > 0; bottles_of_pop --)
+{
+    Console.WriteLine($"{bottles_of_pop} bottles of pop on the wall");
+    /* This is how the code would be layed out without the $ sign
+    Console.WriteLine(bottles_of_pop + " bottles of pop on the wall");*/
+}
+
 #!markdown
 
 ## 5. Summary
@@ -127,7 +137,7 @@ Notice we are using `Console.Write()` instead of `Console.WriteLine()`. The `Wri
 
 #!csharp
 
-for (int i = 0; i < 10; i++)
+for (int i = 0; i < 100; i++)
 {
     Console.Write("*");
 }

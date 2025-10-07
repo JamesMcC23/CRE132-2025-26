@@ -196,7 +196,7 @@ static void DrawEnemies(float[] enemyX, float[] enemyY)
 {
     for (int i = 0; i < enemyX.Length; i++)
     {
-        Raylib.DrawCircle((int)enemyX[i], (int)enemyY[i], 15, Color.RED);
+        Raylib.DrawCircle((int)enemyX[i], (int)enemyY[i], 15, Color.Red);
     }
 }
 
@@ -218,10 +218,10 @@ while (!Raylib.WindowShouldClose())
     Raylib.ClearBackground(Color.DarkGreen);
     
     // Use our flexible methods
-    DrawPlayer(playerX, playerY, Color.BLUE);
+    DrawPlayer(playerX, playerY, Color.Blue);
     DrawEnemies(enemyX, enemyY);
     
-    Raylib.DrawText("Left/Right arrows to move", 10, 10, 20, Color.WHITE);
+    Raylib.DrawText("Left/Right arrows to move", 10, 10, 20, Color.White);
     
     Raylib.EndDrawing();
 }
@@ -352,6 +352,62 @@ while (!Raylib.WindowShouldClose() && gameRunning)
     if (Raylib.IsKeyDown(KeyboardKey.D)) playerX += 4;
     if (Raylib.IsKeyDown(KeyboardKey.W)) playerY -= 4;
     if (Raylib.IsKeyDown(KeyboardKey.S)) playerY += 4;
+    
+    // Star movement - MOVE THIS TO UpdateStars() method
+    starY += 2;
+    if (starY > 600) { starY = -20; starX = Raylib.GetRandomValue(50, 750); }
+    
+    // Collision - MOVE THIS TO CheckCollisions() method
+    float distance = (float)Math.Sqrt((playerX - starX) * (playerX - starX) + (playerY - starY) * (playerY - starY));
+    if (distance < 30) { score++; starY = -20; starX = Raylib.GetRandomValue(50, 750); }
+    
+    // Drawing - MOVE THIS TO DrawEverything() method
+    Raylib.BeginDrawing();
+    Raylib.ClearBackground(Color.Black);
+    Raylib.DrawCircle((int)playerX, (int)playerY, 20, Color.Blue);
+    Raylib.DrawCircle((int)starX, (int)starY, 15, Color.Yellow);
+    Raylib.DrawText($"Score: {score}", 10, 10, 30, Color.White);
+    Raylib.DrawText("WASD to move, collect stars!", 10, 50, 20, Color.LightGray);
+    Raylib.EndDrawing();
+    
+    if (score >= 10) gameRunning = false;
+}
+
+if (score >= 10) Console.WriteLine("You win! Great job!");
+
+Raylib.CloseWindow();
+
+#!markdown
+
+Updated version
+
+#!csharp
+
+using Raylib_cs;
+
+Raylib.InitWindow(800, 600, "Messy Star Game - Fix Me!");
+
+float playerX = 400, playerY = 300;
+float starX = 200, starY = 100;
+int score = 0;
+bool gameRunning = true;
+
+/* The static key word isolates the code within the function from the rest of the code
+    if this is added the function will not return any value */
+
+/*static*/ void handle_input()
+{
+    playerX += (Raylib.IsKeyDown(KeyboardKey.D))-(Raylib.IsKeyDown(KeyboardKey.A));
+    playerY += (Raylib.IsKeyDown(KeyboardKey.S))-(Raylib.IsKeyDown(KeyboardKey.W));
+    
+}
+
+
+
+while (!Raylib.WindowShouldClose() && gameRunning)
+{
+    // Input - MOVE THIS TO HandleInput() method
+    handle_input()
     
     // Star movement - MOVE THIS TO UpdateStars() method
     starY += 2;

@@ -96,7 +96,7 @@ int Add(int a, int b)
     return a + b;
 }
 
-int sum = Add(3, 5);
+int sum = Add(4, 6);
 Console.WriteLine($"3 + 5 = {sum}");
 
 #!markdown
@@ -141,3 +141,27 @@ Raylib.CloseWindow();
 #!csharp
 
 // Your code here 
+
+static int  Multiply_int(int a, int b)
+{
+    return (a * b);
+}
+
+int sum = Multiply_int(3, 4);
+
+static int Max(int number_1, int number_2)
+{
+    if (number_1 > number_2)
+    {
+        return (number_1);
+
+    }
+    else
+    {
+        return (number_2);
+    }
+}
+
+int max_value = Max(7 , 5);
+
+Console.WriteLine($"the sum is {sum} and the max is {max_value}")
